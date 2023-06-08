@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.MarketPlace", "OnlineShop.MarketPlace\OnlineShop.MarketPlace.csproj", "{BBF61C18-BE7A-4226-B958-6930C0CD8B94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShop.MarketPlace", "OnlineShop.MarketPlace\OnlineShop.MarketPlace.csproj", "{BBF61C18-BE7A-4226-B958-6930C0CD8B94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Saas", "OnlineShop.Saas\OnlineShop.Saas.csproj", "{DCC3AD57-D924-45FF-8F2F-6A9BE3A5C9B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShop.Saas", "OnlineShop.Saas\OnlineShop.Saas.csproj", "{DCC3AD57-D924-45FF-8F2F-6A9BE3A5C9B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01_FullScaffolding", "01_FullScaffolding", "{0DBD36CD-2326-43FA-B8CF-09C9216F83D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02_Monolithic", "02_Monolithic", "{50F20DEB-9566-40E2-8E4B-0992239CD3D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Saas.Monolithic", "OnlineShop.Saas.Monolithic\OnlineShop.Saas.Monolithic.csproj", "{60869F1F-4FCB-4625-BE25-A716AE8B8F04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +27,18 @@ Global
 		{DCC3AD57-D924-45FF-8F2F-6A9BE3A5C9B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCC3AD57-D924-45FF-8F2F-6A9BE3A5C9B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCC3AD57-D924-45FF-8F2F-6A9BE3A5C9B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60869F1F-4FCB-4625-BE25-A716AE8B8F04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60869F1F-4FCB-4625-BE25-A716AE8B8F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60869F1F-4FCB-4625-BE25-A716AE8B8F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60869F1F-4FCB-4625-BE25-A716AE8B8F04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BBF61C18-BE7A-4226-B958-6930C0CD8B94} = {0DBD36CD-2326-43FA-B8CF-09C9216F83D2}
+		{DCC3AD57-D924-45FF-8F2F-6A9BE3A5C9B7} = {0DBD36CD-2326-43FA-B8CF-09C9216F83D2}
+		{60869F1F-4FCB-4625-BE25-A716AE8B8F04} = {50F20DEB-9566-40E2-8E4B-0992239CD3D5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AB47A182-6267-48D7-B33F-AB3B734C78F5}
