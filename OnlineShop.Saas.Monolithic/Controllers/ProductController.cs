@@ -1,12 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShop.Saas.Monolithic.Models.Services.Contracts;
 
 namespace OnlineShop.Saas.Monolithic.Controllers
 {
     public class ProductController : Controller
     {
-        public IActionResult Index()
+        private readonly IProductRepository _productRepository;
+
+        public ProductController(IProductRepository productRepository)
         {
-            return View();
+            _productRepository = productRepository;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var products = await _productRepository.Select();
+            return View(products);
         }
     }
 }
