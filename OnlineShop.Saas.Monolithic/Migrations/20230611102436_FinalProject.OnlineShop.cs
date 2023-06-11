@@ -6,11 +6,14 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace OnlineShop.Saas.Monolithic.Migrations
 {
     /// <inheritdoc />
-    public partial class inizializing : Migration
+    public partial class FinalProjectOnlineShop : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "Person");
+
             migrationBuilder.EnsureSchema(
                 name: "Product");
 
@@ -25,6 +28,21 @@ namespace OnlineShop.Saas.Monolithic.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Category", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Person",
+                schema: "Person",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    LName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Person", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -61,6 +79,10 @@ namespace OnlineShop.Saas.Monolithic.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Person",
+                schema: "Person");
+
             migrationBuilder.DropTable(
                 name: "Product",
                 schema: "Product");

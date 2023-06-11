@@ -22,6 +22,30 @@ namespace OnlineShop.Saas.Monolithic.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("OnlineShop.Saas.Monolithic.Models.DomainModels.PersonAggregates.Person", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Person", "Person");
+                });
+
             modelBuilder.Entity("OnlineShop.Saas.Monolithic.Models.DomainModels.ProductAggregates.Category", b =>
                 {
                     b.Property<Guid>("Id")

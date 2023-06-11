@@ -12,8 +12,8 @@ using OnlineShop.Saas.Monolithic.Models;
 namespace OnlineShop.Saas.Monolithic.Migrations
 {
     [DbContext(typeof(OnlineShopDbContext))]
-    [Migration("20230608091519_inizializing")]
-    partial class inizializing
+    [Migration("20230611102436_FinalProject.OnlineShop")]
+    partial class FinalProjectOnlineShop
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,30 @@ namespace OnlineShop.Saas.Monolithic.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("OnlineShop.Saas.Monolithic.Models.DomainModels.PersonAggregates.Person", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Person", "Person");
+                });
 
             modelBuilder.Entity("OnlineShop.Saas.Monolithic.Models.DomainModels.ProductAggregates.Category", b =>
                 {
