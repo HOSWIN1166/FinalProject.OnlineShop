@@ -13,7 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02_Monolithic", "02_Monolit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShop.Saas.Monolithic", "OnlineShop.Saas.Monolithic\OnlineShop.Saas.Monolithic.csproj", "{60869F1F-4FCB-4625-BE25-A716AE8B8F04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.MarketPlace.Monolithic", "OnlineShop.MarketPlace.Monolithic\OnlineShop.MarketPlace.Monolithic.csproj", "{11B5D0A5-7DAB-487A-9A63-617C0219FF54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShop.MarketPlace.Monolithic", "OnlineShop.MarketPlace.Monolithic\OnlineShop.MarketPlace.Monolithic.csproj", "{11B5D0A5-7DAB-487A-9A63-617C0219FF54}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03_SOP", "03_SOP", "{46ED2F6D-2A8F-4303-813B-478FFEA600E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
