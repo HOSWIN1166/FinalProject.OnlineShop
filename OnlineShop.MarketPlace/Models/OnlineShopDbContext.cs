@@ -18,5 +18,7 @@ namespace OnlineShop.MarketPlace.Models
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(modelBuilder);
         }
+        // public DbSet<OrderDetail> OrderDetail { get; set; }
+        public DbSet<OnlineShop.MarketPlace.Models.DomainModels.OrderAggregate.OrderDetail> OrderDetail { get; set; } = default!;
     }
 }

@@ -1,7 +1,17 @@
+using Microsoft.EntityFrameworkCore;
+using OnlineShop.MarketPlace.Monolithic.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+builder.Services.AddDbContext<OnlineShopDbContext>(
+    options => options.UseSqlServer(
+        builder.Configuration.GetConnectionString("Default")
+        ));
+
 
 var app = builder.Build();
 
