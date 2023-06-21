@@ -13,7 +13,7 @@ namespace OnlineShop.Saas.Monolithic.Models.Services.Repositories
             _context = context;
         }
 
-        public async Task<List<Person>> GetSelect()
+        public async Task<List<Person>> Select()
         {
             using (_context)
             {

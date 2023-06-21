@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShop.Saas.Monolithic.Controllers.Services;
 using OnlineShop.Saas.Monolithic.Models.Services.Contracts;
 
 namespace OnlineShop.Saas.Monolithic.Controllers
 {
     public class PersonController : Controller
     {
-        private readonly IPersonRepository _personRepository;
+        private readonly IPersonService _personRepository;
 
-        public PersonController(IPersonRepository personRepository)
+        public PersonController(IPersonService personRepository)
         {
             _personRepository = personRepository;
         }
