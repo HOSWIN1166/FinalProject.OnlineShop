@@ -5,7 +5,7 @@ namespace OnlineShop.Saas.Monolithic.Models.Services.Contracts
     public interface IPersonRepository
     {
 
-        Task<List<Person>> Select();
+        Task<List<Person>> GetSelect();
         //Person SelectById(Guid Id);
         //void Insert(Person person);
         //void Update(Person person);

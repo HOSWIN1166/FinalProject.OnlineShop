@@ -14,7 +14,7 @@ namespace OnlineShop.Saas.Monolithic.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var persons =await _personRepository.Select();
+            var persons =await _personRepository.GetSelect();
             return View(persons);
         }
     }
