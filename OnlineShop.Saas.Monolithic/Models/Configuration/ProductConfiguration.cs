@@ -9,7 +9,7 @@ namespace OnlineShop.Saas.Monolithic.Models.Configuration
         public void Configure(EntityTypeBuilder<Product> builder)
         {
             builder.ToTable("Product", "Product");
-            builder.HasKey(p => p.Id);
+            builder.HasKey(product => product.Id);
             builder.Property(product => product.ProductCode).IsRequired();
             builder.Property(product => product.Title).IsRequired().HasMaxLength(50);
             builder.Property(product => product.UnitPrice).IsRequired().HasMaxLength(50);

@@ -9,10 +9,10 @@ namespace OnlineShop.Saas.Monolithic.Models.Configuration
         public void Configure(EntityTypeBuilder<Person> builder)
         {
             builder.ToTable("Person", "Person");
-            builder.HasKey(p => p.Id);
-            builder.Property(p => p.FName).IsRequired().HasMaxLength(50);
-            builder.Property(p => p.LName).IsRequired().HasMaxLength(50);
-            builder.Property(p => p.IsDelete).IsRequired().HasDefaultValue(false);
+            builder.HasKey(person => person.Id);
+            builder.Property(person => person.FName).IsRequired().HasMaxLength(50);
+            builder.Property(person => person.LName).IsRequired().HasMaxLength(50);
+            builder.Property(person => person.IsDelete).IsRequired().HasDefaultValue(false);
         }
     }
 }

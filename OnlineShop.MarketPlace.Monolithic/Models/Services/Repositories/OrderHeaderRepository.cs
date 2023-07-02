@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnlineShop.MarketPlace.Monolithic.Models.DomainModels.OrderAggregates;
 using OnlineShop.MarketPlace.Monolithic.Models.Services.Contracts;
+using OnlineShop.MarketPlace.Monolithic.Models.Services.Statuses;
 
 namespace OnlineShop.MarketPlace.Monolithic.Models.Services.Repositories
 {
-    public class OrderHeaderRepository : IOrderHeaderRepository
+    public class OrderHeaderRepository : IOrderHeaderRepository<Guid? , bool , RepositoryStatus>
     {
         private readonly OnlineShopDbContext _context;
 
@@ -12,26 +13,7 @@ namespace OnlineShop.MarketPlace.Monolithic.Models.Services.Repositories
         {
             _context = context;
         }
-        public async Task<List<OrderHeader>> Select()
-        {
-            using (_context)
-            {
-                try
-                {
-                    var orderHeader = await _context.OrderHeader.ToListAsync();
-                    return orderHeader;
-                }
-                catch (Exception)
-                {
 
-                    throw;
-                }
-                finally
-                {
-                    if (_context.OrderHeader != null) _context.Dispose();
-                }
-            }
-        }
 
     }
 }

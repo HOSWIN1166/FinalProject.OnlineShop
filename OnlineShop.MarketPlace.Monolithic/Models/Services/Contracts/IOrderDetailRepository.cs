@@ -1,13 +1,7 @@
 ﻿using OnlineShop.MarketPlace.Monolithic.Models.DomainModels.OrderAggregates;
+using OnlineShop.MarketPlace.Monolithic.Models.Services.Contracts.RepositoryFrameworks;
 
 namespace OnlineShop.MarketPlace.Monolithic.Models.Services.Contracts
 {
-    public interface IOrderDetailRepository
-    {
-        Task<List<OrderDetail>> Select();
-        //Person SelectById(Guid Id);
-        //void Insert(Person person);
-        //void Update(Person person);
-        //void Delete(Guid Id);
-    }
+    public interface IOrderDetailRepository<TKey, TExist, TStatus> : IBaseRepository<OrderDetail?, TKey, TExist, TStatus> { }
 }
