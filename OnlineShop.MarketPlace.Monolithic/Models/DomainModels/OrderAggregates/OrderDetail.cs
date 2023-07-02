@@ -4,6 +4,7 @@ namespace OnlineShop.MarketPlace.Monolithic.Models.DomainModels.OrderAggregates
 {
     public class OrderDetail
     {
+        public Guid Id { get; set; }
         public Guid? OrderHeaderId { get; set; }
         public Guid? ProductId { get; set; }
         public decimal UnitPrice { get; set; }

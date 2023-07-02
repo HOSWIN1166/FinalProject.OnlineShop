@@ -4,6 +4,7 @@ namespace OnlineShop.MarketPlace.Monolithic.Models.DomainModels.OrderAggregates
 {
     public class OrderHeader
     {
+        public Guid Id { get; set; }
         public string? Code { get; set; }
         public DateTime? Date { get; set; }
         public DateTime DateCreation { get; set; }
