@@ -11,7 +11,7 @@ namespace OnlineShop.MarketPlace.Monolithic.Models.Services.Repositories
 
         public OrderDetailRepository(OnlineShopDbContext context)
         {
-            _context= context;
+            _context = context;
         }
         public async Task<RepositoryStatus> DeleteAsync(OrderDetail? entity)
         {
@@ -37,7 +37,7 @@ namespace OnlineShop.MarketPlace.Monolithic.Models.Services.Repositories
             {
                 var OrderDetail = await _context.OrderDetail.FirstOrDefaultAsync(o => o.Id == id);
                 if (OrderDetail == null) return RepositoryStatus.NullEntity;
-                OrderDetail.IsDeleted = true;
+                OrderDetail.IsDelete = true;
                 _context.OrderDetail.Update(OrderDetail);
                 await _context.SaveChangesAsync();
                 return RepositoryStatus.Success;
@@ -48,13 +48,13 @@ namespace OnlineShop.MarketPlace.Monolithic.Models.Services.Repositories
             }
         }
 
-        public async Task<RepositoryStatus> InsertAsync(OrderHeader? entity)
+        public async Task<RepositoryStatus> InsertAsync(OrderDetail? entity)
         {
             try
             {
                 if (entity == null)
                     return RepositoryStatus.NullEntity;
-                await _context.OrderHeader.AddAsync(entity);
+                await _context.OrderDetail.AddAsync(entity);
                 await _context.SaveChangesAsync();
                 return RepositoryStatus.Success;
             }
@@ -68,7 +68,7 @@ namespace OnlineShop.MarketPlace.Monolithic.Models.Services.Repositories
         {
             try
             {
-                bool isExist = (_context.OrderHeader?.Any(o => o.Id == id)).GetValueOrDefault();
+                bool isExist = (_context.OrderDetail?.Any(o => o.Id == id)).GetValueOrDefault();
                 return (isExist, RepositoryStatus.Success);
             }
             catch (Exception)
@@ -77,14 +77,14 @@ namespace OnlineShop.MarketPlace.Monolithic.Models.Services.Repositories
             }
         }
 
-        public async Task<(IEnumerable<OrderHeader?>?, RepositoryStatus)> SelectAllAsync()
+        public async Task<(IEnumerable<OrderDetail?>?, RepositoryStatus)> SelectAllAsync()
         {
             try
             {
-                var orderHeaders = await _context.OrderHeader.ToListAsync();
-                if (orderHeaders == null || orderHeaders.Count == 0)
+                var OrderDetail = await _context.OrderDetail.ToListAsync();
+                if (OrderDetail == null || OrderDetail.Count == 0)
                     return (null, RepositoryStatus.TableIsEmpty);
-                return (orderHeaders, RepositoryStatus.Success);
+                return (OrderDetail, RepositoryStatus.Success);
             }
             catch (Exception)
             {
@@ -92,14 +92,14 @@ namespace OnlineShop.MarketPlace.Monolithic.Models.Services.Repositories
             }
         }
 
-        public async Task<(OrderHeader?, RepositoryStatus)> SelectByIdAsync(Guid? id)
+        public async Task<(OrderDetail?, RepositoryStatus)> SelectByIdAsync(Guid? id)
         {
             try
             {
-                var orderHeader = await _context.OrderHeader.FirstOrDefaultAsync(o => o.Id == id);
-                if (orderHeader == null)
+                var OrderDetail = await _context.OrderDetail.FirstOrDefaultAsync(o => o.Id == id);
+                if (OrderDetail == null)
                     return (null, RepositoryStatus.NotExist);
-                return (orderHeader, RepositoryStatus.Success);
+                return (OrderDetail, RepositoryStatus.Success);
             }
             catch (Exception)
             {
@@ -107,13 +107,13 @@ namespace OnlineShop.MarketPlace.Monolithic.Models.Services.Repositories
             }
         }
 
-        public async Task<RepositoryStatus> UpdateAsync(OrderHeader? entity)
+        public async Task<RepositoryStatus> UpdateAsync(OrderDetail? entity)
         {
             try
             {
                 if (entity == null)
                     return RepositoryStatus.NullEntity;
-                _context.OrderHeader.Update(entity);
+                _context.OrderDetail.Update(entity);
                 await _context.SaveChangesAsync();
                 return RepositoryStatus.Success;
 
@@ -121,25 +121,6 @@ namespace OnlineShop.MarketPlace.Monolithic.Models.Services.Repositories
             catch (Exception)
             {
                 return RepositoryStatus.DatabaseError;
-            }
-        }
-        {
-            using(_context)
-            {
-                try
-                {
-                    var orderDetail = await _context.OrderDetail.ToListAsync();
-                    return orderDetail;
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-                finally
-                {
-                    if (_context.OrderDetail != null) _context.Dispose();
-                }
             }
         }
     }
