@@ -15,7 +15,7 @@ namespace OnlineShop.Saas.Monolithic.Models.Configuration
             builder.Property(product => product.UnitPrice).IsRequired().HasMaxLength(50);
             builder.Property(product => product.DateCreation).IsRequired().HasDefaultValue(DateTime.Now);
             builder.Property(product => product.DateModification).IsRequired().HasDefaultValue(DateTime.Now);
-            builder.Property(product => product.IsDeleted).IsRequired().HasDefaultValue(false);
+            builder.Property(product => product.IsDelete).IsRequired().HasDefaultValue(false);
         }
     }
 }
