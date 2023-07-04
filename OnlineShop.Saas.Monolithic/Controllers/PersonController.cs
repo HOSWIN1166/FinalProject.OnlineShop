@@ -1,21 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OnlineShop.Saas.Monolithic.Controllers.Services;
 using OnlineShop.Saas.Monolithic.Models.Services.Contracts;
+using OnlineShop.Saas.Monolithic.Models.Services.Repositories;
 
 namespace OnlineShop.Saas.Monolithic.Controllers
 {
     public class PersonController : Controller
     {
-        private readonly IPersonService _personRepository;
+        private readonly PersonRepository _personRepository;
 
-        public PersonController(IPersonService personRepository)
+        public PersonController(PersonRepository personRepository)
         {
             _personRepository = personRepository;
         }
 
         public async Task<IActionResult> Index()
         {
-            var persons =await _personRepository.GetSelect();
+            var persons =await _personRepository.SelectAllAsync();
             return View(persons);
         }
     }

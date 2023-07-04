@@ -1,32 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShop.Saas.Monolithic.Controllers.Dtos;
 using OnlineShop.Saas.Monolithic.Models;
+using OnlineShop.Saas.Monolithic.Models.Services.Contracts;
+using OnlineShop.Saas.Monolithic.Models.Services.Statuses;
 using System.Diagnostics;
 
 namespace OnlineShop.Saas.Monolithic.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IProductRepository<Guid?, bool, RepositoryStatus> _productRepository;
+
+        public HomeController(IProductRepository<Guid?, bool, RepositoryStatus> productRepository)
         {
-            _logger = logger;
+            _productRepository = productRepository;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            await _productRepository.DeleteByIdAsync(new Guid("577b7270-0095-4a47-8a3a-825e740e4eb0"));
+            var (Products, status) = await _productRepository.SelectAllAsync();
+            List<GetProductDto> getProductDtos = new List<GetProductDto>();
+            foreach (var item in Products)
+            {
+                getProductDtos.Add(new GetProductDto() { Id = item.Id, Title = item.Title, UnitPrice = item.UnitPrice });
+            }
+            return View(getProductDtos);
         }
     }
 }

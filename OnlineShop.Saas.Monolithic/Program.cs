@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using OnlineShop.Saas.Monolithic.Models;
+using OnlineShop.Saas.Monolithic.Models.Services.Contracts;
+using OnlineShop.Saas.Monolithic.Models.Services.Repositories;
+using OnlineShop.Saas.Monolithic.Models.Services.Statuses;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +14,12 @@ builder.Services.AddDbContext<OnlineShopDbContext>(
     options => options.UseSqlServer(
         builder.Configuration.GetConnectionString("Default")
         ));
+
+
+builder.Services.AddScoped<IProductRepository<Guid?, bool, RepositoryStatus>, ProductRepository>();
+builder.Services.AddScoped<IPersonRepository<Guid?, bool, RepositoryStatus>, PersonRepository>();
+
+
 
 var app = builder.Build();
 
